@@ -1,0 +1,13 @@
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 160px;
+    width: 140px;
+    background-color: #3D5A80;
+    /* found color: 98C1D9 */
+
+    font-size: 80px;
+    cursor: pointer;
+}

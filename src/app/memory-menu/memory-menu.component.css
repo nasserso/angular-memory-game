@@ -1,0 +1,5 @@
+.cardContainer {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: min-content min-content min-content min-content;
+}

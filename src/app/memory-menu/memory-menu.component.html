@@ -1,0 +1,5 @@
+<div class="cardContainer">
+    <div *ngFor="let card of cards">
+        <app-card [card]="card" (reveal)="selectCard($event)"></app-card>
+    </div>
+</div>
