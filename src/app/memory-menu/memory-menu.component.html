@@ -1,5 +1,12 @@
-<div class="cardContainer">
-    <div *ngFor="let card of cards">
-        <app-card [card]="card" (reveal)="selectCard($event)"></app-card>
+<div class="menuContainer">
+    <div class="wonContainer" *ngIf="won === true">
+        <h1 class="wonText">You won</h1>
+        <button class="wonButton" (click)="restart()">Restart</button>
+    </div>
+    <h1 class="menuTitle">Memory Game</h1>
+    <div class="cardContainer">
+        <div *ngFor="let card of cards">
+            <app-card [card]="card" (reveal)="selectCard($event)"></app-card>
+        </div>
     </div>
 </div>

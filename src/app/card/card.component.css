@@ -5,8 +5,23 @@
 
     height: 160px;
     width: 140px;
-    background-color: #3D5A80;
-    /* found color: 98C1D9 */
+    transition: background-color 1s;
+    
+    background: repeating-linear-gradient( 45deg, #ffffff, #ffffff 5px, #5EB1BF 5px, #5EB1BF 25px );
+
+    font-size: 80px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.card_selected {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 160px;
+    width: 140px;
+    background-color: #420039;
 
     font-size: 80px;
     cursor: pointer;

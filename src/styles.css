@@ -1,3 +1,9 @@
-.menuContent {
-    background-color: #293241;
+.bodyContainer {
+    background-image: url( '/assets/svg/blob.svg' );
+    background-repeat: no-repeat;
+    background-position: -80%;
+    background-size: 130%;
+    background-color: #FDF0D5;
+    margin: 0;
+    height: 100%;
 }

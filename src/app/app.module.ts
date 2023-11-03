@@ -6,15 +6,9 @@ import { MemoryMenuComponent } from './memory-menu/memory-menu.component';
 import { CardComponent } from './card/card.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MemoryMenuComponent,
-    CardComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
+  declarations: [AppComponent, MemoryMenuComponent, CardComponent],
+  imports: [BrowserModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

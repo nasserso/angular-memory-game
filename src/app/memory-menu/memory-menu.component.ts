@@ -8,29 +8,39 @@ import { v4 as uuid } from 'uuid';
   styleUrls: ['./memory-menu.component.css'],
 })
 export class MemoryMenuComponent {
-  // emoji: https://getemoji.com/
-  // color pattern:
-  // TODO: should use figure as identifier?
-  // TODO: auto-generate any size (with max?)
-  cards: Card[] = [
-    { id: uuid(), figure: '😍', found: false },
-    { id: uuid(), figure: '🧐', found: false },
-    { id: uuid(), figure: '🤪', found: false },
-    { id: uuid(), figure: '😍', found: false },
-    { id: uuid(), figure: '🥶', found: false },
-    { id: uuid(), figure: '🧐', found: false },
-    { id: uuid(), figure: '🤑', found: false },
-    { id: uuid(), figure: '🥶', found: false },
-    { id: uuid(), figure: '🤬', found: false },
-    { id: uuid(), figure: '🤬', found: false },
-    { id: uuid(), figure: '🤪', found: false },
-    { id: uuid(), figure: '🤑', found: false },
-  ];
+  cards: Card[] = this.generateCards();
   lastSelected: Card | undefined;
   canSelect = true;
+  won = false;
+
+  generateCards() {
+    let emojis = ['😍', '🧐', '🤪', '🤑', '🥶', '🤬', '🤩', '👺', '🫠', '👻'];
+    let indexes = Array.from(Array(emojis.length * 2).keys());
+    let cards: Card[] = Array(emojis.length * 2);
+    let key_index = 0;
+    let emoji_index = 0;
+
+    while (indexes.length > 0) {
+      key_index = Math.floor(Math.random() * indexes.length);
+      cards[indexes[key_index]] = {
+        id: uuid(),
+        figure: emojis[emoji_index],
+        found: false,
+      };
+
+      if (indexes.length % 2 !== 0) {
+        emoji_index++;
+      }
+
+      indexes = indexes
+        .slice(0, key_index)
+        .concat(indexes.slice(key_index + 1, indexes.length));
+    }
+
+    return cards;
+  }
 
   selectCard(card: Card) {
-    console.log(this.canSelect);
     if (!this.canSelect) return;
     if (card.found === true) return;
 
@@ -46,12 +56,30 @@ export class MemoryMenuComponent {
       }
       this.lastSelected = undefined;
     }
+
+    this.checkWin();
+  }
+
+  checkWin() {
+    let allSelected = this.cards.reduce(
+      (result, card) => result && card.found,
+      true
+    );
+
+    if (allSelected) {
+      this.won = true;
+    }
+  }
+
+  restart() {
+    this.cards = this.generateCards();
+    this.won = false;
   }
 
   // TODO: small race condition if called more than once
   async hideCard(card: Card) {
     this.canSelect = false;
-    await this.timeout(2000);
+    await this.timeout(1300);
     card.found = false;
     this.canSelect = true;
   }

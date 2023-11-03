@@ -1,3 +1,4 @@
-<div class="card" (click)="this.reveal.emit(card)">
+<!-- <div class="card" (click)="this.reveal.emit(card)"> -->
+<div [ngClass]="card?.found === true ? 'card_selected' : 'card'" (click)="this.reveal.emit(card)">
     <p *ngIf="card?.found == true">{{card?.figure}}</p>
 </div>
