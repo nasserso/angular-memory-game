@@ -1,3 +1,7 @@
+# Angular Memory Game 🧠
+
+![til](https://raw.githubusercontent.com/nasserso/angular-memory-game/main/src/assets/images/memory.gif)
+
 ## Execute with docker in dev
 
 Enter the folder
